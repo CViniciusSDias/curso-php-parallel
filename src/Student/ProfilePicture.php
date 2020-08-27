@@ -13,7 +13,7 @@ class ProfilePicture
 
     private function setFilePath(string $filePath): void
     {
-        $isImage = strpos(mime_content_type($filePath), 'image/') === 0;
+        $isImage = strpos(mime_content_type($filePath), 'image/jp') === 0;
         if (!is_file($filePath) || !$isImage) {
             throw new \InvalidArgumentException('Invalid image file path');
         }

@@ -2,6 +2,13 @@
     "autoload": {
         "psr-4": {
             "Alura\\Threads\\": "src/"
-        }
+        },
+        "files": [
+            "src/isPrime.php"
+        ]
+    },
+    "require": {
+        "ext-gd": "*",
+        "ext-parallel": "*"
     }
 }

@@ -12,4 +12,14 @@ class Student
         $this->fullName = $fullName;
         $this->profilePicture = $profilePicture;
     }
+
+    public function fullName(): string
+    {
+        return $this->fullName;
+    }
+
+    public function profilePicturePath(): string
+    {
+        return $this->profilePicture->filePath();
+    }
 }
