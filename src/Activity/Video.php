@@ -6,7 +6,7 @@ use function Alura\Threads\isPrime;
 
 class Video implements Activity
 {
-    private \DateInterval $duration;
+    private int $durationInSeconds;
 
     public function __construct(\DateInterval $duration)
     {
@@ -14,13 +14,12 @@ class Video implements Activity
             throw new \InvalidArgumentException('Duration must be less than 1 hour');
         }
 
-        $this->duration = $duration;
+        $this->durationInSeconds = $duration->m * 60 + $duration->s;
     }
 
     public function points(): int
     {
-        $durationInSeconds = $this->duration->m * 60 + $this->duration->s;
-
+        $durationInSeconds = $this->durationInSeconds;
         $points = $durationInSeconds * 1.6666666666666667;
 
         if (isPrime($durationInSeconds)) {
