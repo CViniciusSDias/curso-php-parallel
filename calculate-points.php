@@ -27,15 +27,15 @@ foreach ($studentList as $i => $student) {
             0
         );
 
-        printf('%s made %d points today%s', $student->fullName(), $points, PHP_EOL);
-
         $channel->send($points);
 
-        echo 'Valor enviado';
+        printf('%s made %d points today%s', $student->fullName(), $points, PHP_EOL);
 
         return $points;
     }, [$activities, $student, $channel]);
 }
+
+echo 'Valor recebido ' . $channel->recv() . PHP_EOL;
 
 foreach ($futures as $future) {
     $totalPoints += $future->value();
