@@ -35,10 +35,16 @@ foreach ($studentList as $i => $student) {
     }, [$activities, $student, $channel]);
 }
 
-echo 'Valor recebido ' . $channel->recv() . PHP_EOL;
+$totalPointsWithChannel = 0;
+for ($i = 0; $i < count($studentList); $i++) {
+    $totalPointsWithChannel += $channel->recv();
+}
+
+$channel->close();
 
 foreach ($futures as $future) {
     $totalPoints += $future->value();
 }
 
+printf('We had a total of %d points today%s', $totalPointsWithChannel, PHP_EOL);
 printf('We had a total of %d points today%s', $totalPoints, PHP_EOL);
