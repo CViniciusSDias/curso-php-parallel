@@ -17,8 +17,8 @@ foreach ($studentList as $i => $student) {
 
     $runtimes[$i] = new Runtime(__DIR__ . '/vendor/autoload.php');
 
-    $runtimes[$i]->run(function (array $activities, Student $student, int $totalPoints) {
-        $totalPoints += $points = array_reduce(
+    $runtimes[$i]->run(function (array $activities, Student $student, int &$totalOfPointsOfTheDay) {
+        $totalOfPointsOfTheDay += $points = array_reduce(
             $activities,
             fn (int $total, Activity $activity) => $total + $activity->points(),
             0
